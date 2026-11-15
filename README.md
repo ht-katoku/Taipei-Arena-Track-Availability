@@ -12,6 +12,9 @@ ruling made along the way.
 Phase 1 (setup) in progress. See `docs/sources-discovery.md` for the source
 questions that must be confirmed before Phase 6.
 
+Preview: <https://tsb-web-preview.taipei-track-status.workers.dev> (placeholder
+page with the security headers, first deployed 2026-11-15).
+
 ## Local development
 
 Requires Node 22 or later.
