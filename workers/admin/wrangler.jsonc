@@ -1,0 +1,16 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "tsb-admin",
+  "main": "index.ts",
+  "compatibility_date": "2026-10-01",
+  "send_metrics": false,
+  "vars": { "ENVIRONMENT": "local" },
+  // Bindings (Phase 3+): D1 `tsb_core` as `DB` (read/write); service bindings
+  // to `tsb-ingest` and `tsb-publish`. No KV, no R2, no outbound fetch.
+  // Secrets: ACCESS_AUD, ACCESS_TEAM_DOMAIN, CURATOR_EMAILS, PDF_PARSER_CLIENT_ID.
+  "env": {
+    "preview": { "name": "tsb-admin-preview", "vars": { "ENVIRONMENT": "preview" } },
+    "production": { "name": "tsb-admin", "vars": { "ENVIRONMENT": "production" } },
+    // production "routes": [{ "pattern": "<DOMAIN>/admin*", "zone_name": "<DOMAIN>" }]
+  },
+}

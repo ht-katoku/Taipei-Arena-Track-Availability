@@ -1,0 +1,6 @@
+dist/
+node_modules/
+.wrangler/
+package-lock.json
+# The six spec documents are the source of truth and are never reformatted.
+/*— Taipei Track Status Board.md

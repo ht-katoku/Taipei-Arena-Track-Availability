@@ -1,0 +1,19 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "tsb-publish",
+  "main": "index.ts",
+  "compatibility_date": "2026-10-01",
+  "send_metrics": false,
+  "vars": { "ENVIRONMENT": "local", "FEATURE_SUBSCRIBE": "false" },
+  // Bindings (Phase 3+): D1 `DB` (read/write), KV `KV` (write).
+  // Secrets: CF_PURGE_TOKEN, CF_ZONE_ID.
+  // Crons (Phase 5 and 8), Workers cron runs in UTC:
+  //   "*/30 * * * *"  every 30 min         scheduled publish, no purge
+  //   "30 10 * * *"   18:30 Taipei daily   write reconciliation rows
+  //   "0 19 * * *"    03:00 Taipei daily   nightly rebuild check
+  //   "0 23 * * 0"    Mon 07:00 Taipei     weekly digest email
+  "env": {
+    "preview": { "name": "tsb-publish-preview", "vars": { "ENVIRONMENT": "preview" } },
+    "production": { "name": "tsb-publish", "vars": { "ENVIRONMENT": "production" } },
+  },
+}

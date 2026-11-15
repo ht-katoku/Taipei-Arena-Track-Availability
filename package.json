@@ -1,0 +1,28 @@
+{
+  "name": "taipei-track-status",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . && prettier --check .",
+    "format": "prettier --write .",
+    "test": "vitest run",
+    "build": "wrangler deploy --dry-run --outdir dist/web -c workers/web/wrangler.jsonc --env=\"\"",
+    "dev:web": "wrangler dev -c workers/web/wrangler.jsonc",
+    "deploy:preview": "wrangler deploy -c workers/web/wrangler.jsonc --env preview"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261113.1",
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0",
+    "prettier": "^3.3.0",
+    "typescript": "^5.6.0",
+    "typescript-eslint": "^8.0.0",
+    "vitest": "^3.0.0",
+    "wrangler": "^4.0.0"
+  }
+}

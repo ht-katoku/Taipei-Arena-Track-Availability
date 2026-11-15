@@ -1,0 +1,17 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "tsb-ingest",
+  "main": "index.ts",
+  "compatibility_date": "2026-10-01",
+  "send_metrics": false,
+  "vars": { "ENVIRONMENT": "local" },
+  // Bindings (Phase 3+): D1 `DB` (read/write), KV `KV` (writes health:v1 only),
+  // R2 `tsb-raw` as `RAW` (write), service binding to `tsb-publish`.
+  // Secrets: CWA_API_KEY, MOENV_API_KEY.
+  // Cron (Phase 6), Workers cron runs in UTC:
+  //   "triggers": { "crons": ["*/5 * * * *"] }   // every 5 min, Taipei time irrelevant
+  "env": {
+    "preview": { "name": "tsb-ingest-preview", "vars": { "ENVIRONMENT": "preview" } },
+    "production": { "name": "tsb-ingest", "vars": { "ENVIRONMENT": "production" } },
+  },
+}

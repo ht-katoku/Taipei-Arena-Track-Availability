@@ -1,0 +1,22 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "tsb-web",
+  "main": "index.ts",
+  "compatibility_date": "2026-10-01",
+  "send_metrics": false,
+  "vars": { "ENVIRONMENT": "local" },
+  // Bindings (Phase 3): KV `SNAPSHOTS` as `KV`, read only. No D1, ever.
+  "env": {
+    "preview": {
+      "name": "tsb-web-preview",
+      "vars": { "ENVIRONMENT": "preview" },
+      // "kv_namespaces": [{ "binding": "KV", "id": "<preview SNAPSHOTS id>" }]
+    },
+    "production": {
+      "name": "tsb-web",
+      "vars": { "ENVIRONMENT": "production" },
+      // "kv_namespaces": [{ "binding": "KV", "id": "<production SNAPSHOTS id>" }]
+      // "routes": [{ "pattern": "<DOMAIN>/*", "zone_name": "<DOMAIN>" }]
+    },
+  },
+}
